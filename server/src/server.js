@@ -57,6 +57,9 @@ app.use('/api/posts', postRoutes);
 app.use('/api/comments', commentRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/stats', statsRoutes);
+app.get('/', (req, res) => {
+  res.send('✅ Blogging Platform Backend is running successfully!');
+});
 
 // Health
 app.get('/api/health', (_req, res) => {
