@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Navbar from './components/Navbar';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import CreatePost from './pages/CreatePost';
+import PostDetail from './pages/PostDetail';
+import About from './pages/About';
+import MyBlogs from './pages/MyBlogs';
+import EditPost from './pages/EditPost';
+import Achievements from './pages/Achievements';
+import Profile from './pages/Profile';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <div className="app-root">
+        <Navbar />
+        <main className="app-main">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/create" element={<CreatePost />} />
+            <Route path="/edit/:slug" element={<EditPost />} />
+            <Route path="/post/:slug" element={<PostDetail />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/my-blogs" element={<MyBlogs />} />
+            <Route path="/achievements" element={<Achievements />} />
+            <Route path="/profile" element={<Profile />} />
+          </Routes>
+        </main>
+        <footer className="app-footer">© {new Date().getFullYear()} BlogNest</footer>
+      </div>
+    </BrowserRouter>
   );
 }
 
